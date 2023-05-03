@@ -1,0 +1,63 @@
+plugins {
+    // lombok plugin for automatic annotation processing and lombok dependency
+    id "io.freefair.lombok" version "$freefairLombokVersion"
+    // add support for Java
+    id 'java'
+    // add support for building an application.
+    id 'application'
+    id 'com.github.ben-manes.versions' version "$benManesVersion"
+}
+
+apply from: 'gradle/dependencyUpdates.gradle'
+apply from: 'gradle/zipProject.gradle'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+            [group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion],
+            [group: 'commons-cli', name: 'commons-cli', version: commonsCliVersion]
+    )
+    //
+    testImplementation(
+        [group: 'org.junit.jupiter', name: 'junit-jupiter', version: jupiterVersion],
+        [group: 'org.hamcrest', name: 'hamcrest-core', version: hamcrestVersion],
+        [group: 'org.assertj', name: 'assertj-core', version: '3.22.0']
+    )
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.5.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+}
+
+test {
+    useJUnitPlatform()
+    minHeapSize = "512m" // initial heap size
+    maxHeapSize = "2g" // maximum heap size
+}
+
+application {
+    getMainClass().set('de.uni_passau.aj.exercise1.LoanCalculator')
+}
+
+jar {
+    enabled = true
+    manifest {
+        attributes(
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Build-Jdk': "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+            'Compatibility': project.sourceCompatibility,
+            'Built-By': System.properties['user.name'],
+            'Main-Class': 'de.uni_passau.aj.exercise1.taxcalc.TaxCalculationStarter'
+        )
+    }
+}
+

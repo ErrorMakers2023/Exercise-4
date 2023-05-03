@@ -1,0 +1,38 @@
+@startuml
+class "Advisor" as a1 #Application {
+  * name : String
+  email : String
+  void addPortfolio(Portfolio portfolio)
+}
+
+class "Portfolio" as p1 #Application {
+  name : String
+  type : PortfolioType
+}
+
+class "Account" as acc1 #Application {
+  type : AccountType
+  balance : BigDecimal
+  currency : Currency
+}
+
+enum AccountType {
+  SALARY
+  PRIVATE_SAVINGS
+  FOREIGN_CURRENCIES
+  GIFT
+}
+enum Currency {
+  EUR
+  CHF
+  USD
+}
+enum  PortfolioType {
+  STANDARD
+  RETIREMENT_PROVISION
+}
+a1 "1" *-- "many" p1 : contains "portfolios"
+p1 "1" *-- "many" acc1 : contains "accounts"
+
+center footer Datenmodell Stand 29.04.2023
+@enduml
