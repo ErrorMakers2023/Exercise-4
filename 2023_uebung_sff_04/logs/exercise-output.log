@@ -1,0 +1,7 @@
+14:18:58.437 [main] INFO  d.u.aj.exercise4.catdog.Cat - Meow!
+14:18:58.449 [main] INFO  d.u.aj.exercise4.catdog.Dog - Bark!
+14:18:58.451 [main] INFO  d.u.aj.exercise4.catdog.Baumaschine - Brrrrrr!
+14:18:58.452 [main] INFO  d.u.aj.exercise4.catdog.Animal - (heavy breathing)
+14:18:58.452 [main] INFO  d.u.aj.exercise4.catdog.Cat - Meow!
+14:18:58.452 [main] INFO  d.u.aj.exercise4.catdog.Dog - Bark!
+14:18:58.453 [main] INFO  d.u.aj.exercise4.catdog.CatDog - CatDog

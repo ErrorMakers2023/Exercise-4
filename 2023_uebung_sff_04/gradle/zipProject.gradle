@@ -1,0 +1,12 @@
+tasks.register('zipProject', Zip) {
+    from '.'
+    include '*'
+    include 'src/**'
+    include 'gradle/**'
+    exclude '.gradle'
+    exclude 'build'
+    exclude '.idea'
+
+    archiveFileName = "${project.name}.zip"
+    destinationDirectory = file("$buildDir/distribution")
+}
