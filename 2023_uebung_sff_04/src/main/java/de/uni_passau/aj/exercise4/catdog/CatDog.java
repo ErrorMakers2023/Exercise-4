@@ -29,7 +29,6 @@ interface Cat extends Animal {
         log.info("Meow!");
     }
 
-    void WhatAmI();
 }
 
 interface Dog extends Animal {
@@ -63,9 +62,6 @@ class Corgi implements Dog {
 
 @Slf4j
 abstract class TreppenSteiger implements Baumaschine {
-    void run() {
-        log.info("(not so heavy breathing)");
-    }
 }
 
 class Shepard extends TreppenSteiger implements Dog {
@@ -93,10 +89,6 @@ public class CatDog implements Cat, Dog {
         Dog.super.makeNoise();
     }
 
-    @Override
-    public void WhatAmI() {
-        log.info("CatDog");
-    }
 }
 
 // ... and get it running...
